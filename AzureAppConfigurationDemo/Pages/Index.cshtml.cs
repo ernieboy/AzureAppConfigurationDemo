@@ -1,20 +1,20 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Options;
 
 namespace AzureAppConfigurationDemo.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
-
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(IOptionsMonitor<AzureAppConfigurationDemoSettings> optionsMonitor)
         {
-            _logger = logger;
+            AzureAppConfigurationDemoSettings = optionsMonitor.CurrentValue;
         }
 
         public void OnGet()
         {
-
+            
         }
+
+        public AzureAppConfigurationDemoSettings AzureAppConfigurationDemoSettings { get; set; }
     }
 }

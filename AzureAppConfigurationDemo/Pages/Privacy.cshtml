@@ -1,8 +1,17 @@
 ﻿@page
 @model PrivacyModel
+@inject Microsoft.FeatureManagement.IFeatureManager FeatureManager
 @{
     ViewData["Title"] = "Privacy Policy";
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+@if (await FeatureManager.IsEnabledAsync(nameof(Features.PrivacyPage)))
+{
+    <p>Use this page to detail your site's privacy policy.</p>
+}
+else
+{
+    <p>Sorry, page not available</p>
+}
+
