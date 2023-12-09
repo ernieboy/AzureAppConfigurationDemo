@@ -11,6 +11,7 @@ builder.Configuration.AddAzureAppConfiguration(configurationOptions =>
     {
         refreshOptions.Register($"{nameof(AzureAppConfigurationDemoSettings)}:Sentinel", refreshAll: true);
     });
+    configurationOptions.UseFeatureFlags();
 });
 
 // Add services to the container.
